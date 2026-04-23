@@ -1,6 +1,11 @@
+#ifndef WINDOW_HPP_
+#define WINDOW_HPP_
+
 #include <GLFW/glfw3.h>
 
 #include <string>
+
+#include "logger.hpp"
 
 namespace graphics
 {
@@ -21,6 +26,9 @@ class Window
   bool CloseRequested() const;
 
  private:
+  common::Logger logger_;
   GLFWwindow* window_;
 };
 }  // namespace graphics
+
+#endif

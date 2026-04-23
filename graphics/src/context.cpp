@@ -2,11 +2,21 @@
 
 #include <stdlib.h>
 
+#include "logger.hpp"
+
 namespace graphics
 {
 
+void ErrorCallback(int32_t error, char const* desc)
+{
+  common::Logger logger{};
+  logger.Error("GLFW error occurred: {} ({})", desc, error);
+}
+
 Context::Context()
 {
+  glfwSetErrorCallback(ErrorCallback);
+
   if (!glfwInit())
   {
     glfwTerminate();
@@ -21,4 +31,5 @@ Context::~Context()
 {
   glfwTerminate();
 }
+
 }  // namespace graphics

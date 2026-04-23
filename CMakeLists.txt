@@ -11,6 +11,7 @@ add_executable(${PROJECT_NAME}
     src/main.cpp
 )
 
+add_subdirectory(common)
 add_subdirectory(dependencies)
 add_subdirectory(graphics)
 
@@ -21,5 +22,6 @@ PUBLIC
 
 target_link_libraries(${PROJECT_NAME}
 PRIVATE
+    common_lib
     graphics
 )

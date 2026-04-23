@@ -19,6 +19,8 @@ PUBLIC
 )
 
 target_link_libraries(${GRAPHICS_LIB_NAME}
-    PUBLIC glfw
-    PUBLIC OpenGL::GL
+PUBLIC
+    common_lib
+    glfw
+    OpenGL::GL
 )

@@ -11,14 +11,18 @@ Window::Window(uint16_t initial_width, uint16_t initial_height,
 
   if (!window_)
   {
+    logger_.Error("Window creation failed.");
     glfwTerminate();
     exit(EXIT_FAILURE);
   }
+
+  logger_.Debug("Window created.");
 }
 
 Window::~Window()
 {
   glfwDestroyWindow(window_);
+  logger_.Debug("Window destroyed.");
 }
 
 void Window::Refresh() const
@@ -31,7 +35,13 @@ void Window::FocusContent() const
 }
 bool Window::CloseRequested() const
 {
-  return glfwWindowShouldClose(window_);
+  bool const should_close = glfwWindowShouldClose(window_);
+  if (should_close)
+  {
+    logger_.Debug("Window should be closed.");
+  }
+
+  return should_close;
 }
 
-} // namespace graphics
+}  // namespace graphics
