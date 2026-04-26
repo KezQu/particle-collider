@@ -8,6 +8,7 @@ add_library(${GRAPHICS_LIB_NAME}
     ${CMAKE_CURRENT_SOURCE_DIR}/src/window.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/context.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/frame_guard.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/pane.cpp
 )
 
 set(GRAPHICS_INCLUDE_DIR

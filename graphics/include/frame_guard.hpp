@@ -1,3 +1,6 @@
+#ifndef FRAME_GUARD_HPP_
+#define FRAME_GUARD_HPP_
+
 #include "i_window.hpp"
 #include "imgui.h"
 
@@ -16,3 +19,5 @@ class FrameGuard
 };
 
 }  // namespace graphics
+
+#endif

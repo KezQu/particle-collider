@@ -9,6 +9,7 @@ find_package(Threads REQUIRED)
 
 add_executable(${PROJECT_NAME}
     src/main.cpp
+    src/engine_factory.cpp
 )
 
 add_subdirectory(common)
@@ -18,6 +19,7 @@ add_subdirectory(graphics)
 target_include_directories(${PROJECT_NAME}
 PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/graphics/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 target_link_libraries(${PROJECT_NAME}
