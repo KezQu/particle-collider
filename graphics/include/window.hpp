@@ -5,11 +5,12 @@
 
 #include <string>
 
+#include "i_window.hpp"
 #include "logger.hpp"
 
 namespace graphics
 {
-class Window
+class Window : public IWindow
 {
  public:
   Window(uint16_t initial_width, uint16_t initial_height,
@@ -21,9 +22,8 @@ class Window
   Window& operator=(Window const&) = delete;
   ~Window();
 
-  void Refresh() const;
   void EnableVSync() const;
-  void FocusContext() const;
+  GLFWwindow* const GetContext() const override;
   bool CloseRequested() const;
 
  private:

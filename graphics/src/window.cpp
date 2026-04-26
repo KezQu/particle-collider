@@ -11,6 +11,7 @@ bool constexpr kInstallCallbacks{true};
 
 Window::Window(uint16_t initial_width, uint16_t initial_height,
                std::string_view title)
+    : IWindow{}
 {
   window_ =
       glfwCreateWindow(initial_width, initial_height, title.data(), NULL, NULL);
@@ -28,11 +29,12 @@ Window::Window(uint16_t initial_width, uint16_t initial_height,
 
 void Window::InitImGui()
 {
-  FocusContext();
+  glfwMakeContextCurrent(window_);
 
   ImGui::CreateContext();
   ImGuiIO& io = ImGui::GetIO();
-  io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+  io.ConfigFlags |=
+      ImGuiConfigFlags_NavEnableKeyboard | ImGuiConfigFlags_DockingEnable;
   ImGui::StyleColorsDark();
 
   ImGui_ImplGlfw_InitForOpenGL(window_, kInstallCallbacks);
@@ -54,20 +56,15 @@ Window::~Window()
   logger_.Debug("Window destroyed.");
 }
 
-void Window::Refresh() const
-{
-  glfwSwapBuffers(window_);
-}
-
 void Window::EnableVSync() const
 {
-  FocusContext();
+  glfwMakeContextCurrent(window_);
   glfwSwapInterval(1);
 }
 
-void Window::FocusContext() const
+GLFWwindow* const Window::GetContext() const
 {
-  glfwMakeContextCurrent(window_);
+  return window_;
 }
 
 bool Window::CloseRequested() const
