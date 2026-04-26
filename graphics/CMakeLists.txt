@@ -22,5 +22,6 @@ target_link_libraries(${GRAPHICS_LIB_NAME}
 PUBLIC
     common_lib
     glfw
+    imgui
     OpenGL::GL
 )

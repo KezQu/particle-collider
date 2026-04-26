@@ -22,10 +22,13 @@ class Window
   ~Window();
 
   void Refresh() const;
-  void FocusContent() const;
+  void EnableVSync() const;
+  void FocusContext() const;
   bool CloseRequested() const;
 
  private:
+  void InitImGui();
+
   common::Logger logger_;
   GLFWwindow* window_;
 };

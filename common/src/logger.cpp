@@ -23,7 +23,7 @@ void Logger::Log(LogLevel log_level, std::string formatted_message) const
   {
     return;
   }
-  out_ << std::format("[{:%T}] {:7} {}", std::chrono::system_clock::now(),
+  out_ << std::format("|{:%T}| |{:7}| |{}", std::chrono::system_clock::now(),
                       LogLevelToStringView(log_level), formatted_message)
        << std::endl;
 }
