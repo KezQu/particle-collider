@@ -9,6 +9,10 @@ find_package(MPI REQUIRED)
 
 add_executable(${PROJECT_NAME}
     src/main.cpp
+    src/mpi_guard.cpp
+    src/process.cpp
+    src/mediator_process.cpp
+
     src/engine/engine_factory.cpp
     src/engine/backend_selector.cpp
     src/engine/block_num_selector.cpp

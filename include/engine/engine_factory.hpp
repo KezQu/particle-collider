@@ -19,6 +19,7 @@ class EngineFactory
   using UINodes = std::vector<std::reference_wrapper<graphics::INode>>;
 
   EngineFactory() noexcept;
+
   UINodes GetUserInterfaceNodes();
 
  private:
