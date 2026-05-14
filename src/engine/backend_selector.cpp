@@ -1,25 +1,17 @@
+#include "backend_selector.hpp"
 
-#include "engine_factory.hpp"
+#include <string_view>
+#include <vector>
 
-#include "engine_factory_node_impl.hpp"
 #include "imgui.h"
 
 namespace collider
 {
+BackendSelector::BackendSelector() noexcept : INode("##SelectBackend") {}
 
-EngineFactory::EngineFactory()
-    : node_impl_{std::make_unique<EngineFactoryNodeImpl>()}
+void BackendSelector::Generate()
 {
-}
-
-void EngineFactory::Generate()
-{
-  node_impl_->Generate();
-}
-
-void EngineFactoryNodeImpl::Generate()
-{
-  std::vector<std::string_view> available_backends{"CUDA", "OpenCL"};
+  std::vector<std::string_view> const available_backends{"CUDA", "OpenCL"};
 
   if (!ImGui::BeginCombo(name_.data(),
                          available_backends.at(selected_backend_).data()))
@@ -33,10 +25,11 @@ void EngineFactoryNodeImpl::Generate()
     if (ImGui::Selectable(available_backends.at(idx).data(), is_selected))
     {
       selected_backend_ = idx;
+      logger_.Debug("Selected backend: {}",
+                    available_backends.at(selected_backend_));
     }
     if (is_selected) ImGui::SetItemDefaultFocus();
   }
   ImGui::EndCombo();
 }
-
 }  // namespace collider

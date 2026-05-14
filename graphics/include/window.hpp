@@ -3,7 +3,7 @@
 
 #include <GLFW/glfw3.h>
 
-#include <string>
+#include <string_view>
 
 #include "i_window.hpp"
 #include "logger.hpp"
