@@ -17,5 +17,5 @@ int main(int32_t argc, char** argv)
   {
     worker = std::make_unique<mpi::MediatorProcess>();
   }
-  worker->ProcessTasks();
+  worker->ProcessTask();
 }

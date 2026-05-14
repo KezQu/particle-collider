@@ -8,7 +8,12 @@ Process::Process()
   MPI_Comm_rank(MPI_COMM_WORLD, &rank_);
 }
 
-void Process::ProcessTasks()
+Process::~Process()
+{
+  logger_.Info("Process {} shuts down.", rank_);
+}
+
+void Process::ProcessTask()
 {
   while (!close_requested)
   {

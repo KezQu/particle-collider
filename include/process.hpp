@@ -3,6 +3,7 @@
 
 #include <functional>
 
+#include "logger.hpp"
 #include "mpi.h"
 
 namespace mpi
@@ -13,17 +14,17 @@ class Process
   static constexpr inline int32_t kMediatorProcess{};
 
   Process();
-  virtual ~Process() = default;
+  virtual ~Process();
 
-  void ProcessTasks();
+  void ProcessTask();
   int32_t GetRank() const;
 
  protected:
-  static inline bool close_requested{};
-
   virtual void Task();
 
+  common::Logger logger_{};
   int32_t rank_{};
+  bool close_requested{};
 };
 
 }  // namespace mpi
