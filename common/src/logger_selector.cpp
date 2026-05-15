@@ -15,6 +15,7 @@ void LoggerSelector::Generate()
   std::vector<std::string_view> const available_log_levels{"Error", "Warn",
                                                            "Info", "Debug"};
 
+  ImGui::SeparatorText("Select logging level");
   if (!ImGui::BeginCombo(name_.data(),
                          available_log_levels.at(selected_log_level_).data()))
   {

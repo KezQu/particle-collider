@@ -9,6 +9,7 @@
 #include "block_num_selector.hpp"
 #include "i_node.hpp"
 #include "logger.hpp"
+#include "particles_selector.hpp"
 
 namespace collider
 {
@@ -27,6 +28,7 @@ class EngineFactory
 
   BackendSelector backend_selector_{};
   BlockNumSelector block_num_selector_{};
+  ParticlesSelector particles_selector_{};
 };
 
 }  // namespace collider

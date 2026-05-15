@@ -10,12 +10,19 @@ find_package(MPI REQUIRED)
 add_executable(${PROJECT_NAME}
     src/main.cpp
     src/mpi_guard.cpp
-    src/process.cpp
+    src/base_process.cpp
     src/mediator_process.cpp
+    src/worker_process.cpp
+
+    src/cuda_compute_block.cpp
+    src/opencl_compute_block.cpp
+    src/particle.cpp
+    src/vec_2d.cpp
 
     src/engine/engine_factory.cpp
     src/engine/backend_selector.cpp
     src/engine/block_num_selector.cpp
+    src/engine/particles_selector.cpp
 )
 
 add_subdirectory(dependencies)

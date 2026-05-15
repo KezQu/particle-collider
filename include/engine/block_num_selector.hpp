@@ -14,9 +14,7 @@ class BlockNumSelector : public graphics::INode
   void Generate() override;
 
  private:
-  common::Logger logger_{};
-
-  size_t selected_num_of_blocks_{};
+  int32_t number_of_blocks_{};
 };
 }  // namespace collider
 

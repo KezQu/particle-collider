@@ -13,6 +13,7 @@ void BackendSelector::Generate()
 {
   std::vector<std::string_view> const available_backends{"CUDA", "OpenCL"};
 
+  ImGui::SeparatorText("Choose backend");
   if (!ImGui::BeginCombo(name_.data(),
                          available_backends.at(selected_backend_).data()))
   {

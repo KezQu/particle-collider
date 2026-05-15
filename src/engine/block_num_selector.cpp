@@ -1,6 +1,7 @@
 #include "block_num_selector.hpp"
 
 #include <string_view>
+#include <thread>
 #include <vector>
 
 #include "imgui.h"
@@ -11,27 +12,16 @@ BlockNumSelector::BlockNumSelector() noexcept : INode("##SelectNumOfBlocks") {}
 
 void BlockNumSelector::Generate()
 {
-  std::vector<std::string_view> const available_num_of_blocks{
-      "1", "2", "4", "6", "8", "10", "12", "14", "16"};
+  auto const prev_num_of_blocks = number_of_blocks_;
 
-  if (!ImGui::BeginCombo(
-          name_.data(),
-          available_num_of_blocks.at(selected_num_of_blocks_).data()))
+  ImGui::SeparatorText("Number of computing blocks");
+  if (ImGui::SliderInt("##CompuBlocksNum", &number_of_blocks_, 1,
+                       std::thread::hardware_concurrency()))
   {
-    return;
-  }
-
-  for (size_t idx{}; idx < available_num_of_blocks.size(); ++idx)
-  {
-    bool const is_selected = (selected_num_of_blocks_ == idx);
-    if (ImGui::Selectable(available_num_of_blocks.at(idx).data(), is_selected))
+    if (number_of_blocks_ > 1)
     {
-      selected_num_of_blocks_ = idx;
-      logger_.Debug("Selected {} number of blocks.",
-                    available_num_of_blocks.at(selected_num_of_blocks_));
+      number_of_blocks_ = (number_of_blocks_ / 2) * 2;
     }
-    if (is_selected) ImGui::SetItemDefaultFocus();
   }
-  ImGui::EndCombo();
 }
 }  // namespace collider

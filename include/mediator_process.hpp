@@ -1,16 +1,16 @@
 #ifndef MEDIATOR_PROCESS_HPP_
 #define MEDIATOR_PROCESS_HPP_
 
+#include "base_process.hpp"
 #include "engine_factory.hpp"
 #include "frame_guard.hpp"
 #include "logger_selector.hpp"
 #include "pane.hpp"
-#include "process.hpp"
 #include "window.hpp"
 
 namespace mpi
 {
-class MediatorProcess final : public Process
+class MediatorProcess final : public BaseProcess
 {
  public:
   MediatorProcess();

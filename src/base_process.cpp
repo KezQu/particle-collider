@@ -1,19 +1,14 @@
 
-#include "process.hpp"
+#include "base_process.hpp"
 
 namespace mpi
 {
-Process::Process()
+BaseProcess::BaseProcess()
 {
   MPI_Comm_rank(MPI_COMM_WORLD, &rank_);
 }
 
-Process::~Process()
-{
-  logger_.Info("Process {} shuts down.", rank_);
-}
-
-void Process::ProcessTask()
+void BaseProcess::ProcessTask()
 {
   while (!close_requested)
   {
@@ -23,11 +18,11 @@ void Process::ProcessTask()
   }
 }
 
-int32_t Process::GetRank() const
+int32_t BaseProcess::GetRank() const
 {
   return rank_;
 }
 
-void Process::Task() {}
+void BaseProcess::Task() {}
 
 }  // namespace mpi

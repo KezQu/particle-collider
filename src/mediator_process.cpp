@@ -4,7 +4,7 @@ namespace mpi
 {
 
 MediatorProcess::MediatorProcess()
-    : Process(),
+    : BaseProcess(),
       main_window_{1280, 720, "Particle collision"},
       main_menu_{"MainMenu"},
       logger_selector_{},
@@ -22,7 +22,7 @@ MediatorProcess::MediatorProcess()
 void MediatorProcess::Task()
 {
   auto const& frame = graphics::FrameGuard{main_window_};
-  // ImGui::ShowDemoWindow();
+  ImGui::ShowDemoWindow();
   main_menu_.Generate();
   close_requested = main_window_.CloseRequested();
 }

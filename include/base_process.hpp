@@ -3,24 +3,24 @@
 
 #include <functional>
 
+#include "i_process.hpp"
 #include "logger.hpp"
 #include "mpi.h"
 
 namespace mpi
 {
-class Process
+class BaseProcess : public IProcess
 {
  public:
   static constexpr inline int32_t kMediatorProcess{};
 
-  Process();
-  virtual ~Process();
+  BaseProcess();
 
-  void ProcessTask();
-  int32_t GetRank() const;
+  void ProcessTask() override;
+  int32_t GetRank() const override;
 
  protected:
-  virtual void Task();
+  void Task() override;
 
   common::Logger logger_{};
   int32_t rank_{};
