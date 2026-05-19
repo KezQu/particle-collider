@@ -12,8 +12,6 @@ BlockNumSelector::BlockNumSelector() noexcept : INode("##SelectNumOfBlocks") {}
 
 void BlockNumSelector::Generate()
 {
-  auto const prev_num_of_blocks = number_of_blocks_;
-
   ImGui::SeparatorText("Number of computing blocks");
   if (ImGui::SliderInt("##CompuBlocksNum", &number_of_blocks_, 1,
                        std::thread::hardware_concurrency()))
@@ -24,4 +22,10 @@ void BlockNumSelector::Generate()
     }
   }
 }
+
+int32_t BlockNumSelector::GetNumberOfBlocks() const
+{
+  return number_of_blocks_;
+}
+
 }  // namespace collider

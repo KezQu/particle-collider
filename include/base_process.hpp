@@ -9,6 +9,23 @@
 
 namespace mpi
 {
+
+enum class State : int8_t
+{
+  kIdle,
+  kRunning
+};
+
+struct ControlFrame
+{
+  int32_t number_of_particles{};
+  int32_t number_of_blocks{1};
+  int8_t backend{-1};
+  int8_t state{};
+  uint8_t log_level{};
+  bool close_requested{};
+};
+
 class BaseProcess : public IProcess
 {
  public:
@@ -24,7 +41,7 @@ class BaseProcess : public IProcess
 
   common::Logger logger_{};
   int32_t rank_{};
-  bool close_requested{};
+  ControlFrame control_frame_{};
 };
 
 }  // namespace mpi

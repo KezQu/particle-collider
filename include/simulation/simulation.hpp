@@ -1,5 +1,5 @@
-#ifndef ENGINE_FACTORY_HPP_
-#define ENGINE_FACTORY_HPP_
+#ifndef SIMULATION_HPP_
+#define SIMULATION_HPP_
 
 #include <memory>
 #include <string_view>
@@ -10,18 +10,29 @@
 #include "i_node.hpp"
 #include "logger.hpp"
 #include "particles_selector.hpp"
+#include "simulation_controls.hpp"
 
 namespace collider
 {
 
-class EngineFactory
+struct UserInputs
+{
+  int32_t number_of_blocks{};
+  int32_t number_of_particles{};
+  int8_t backend{};
+  Action action{};
+};
+
+class Simulation
 {
  public:
   using UINodes = std::vector<std::reference_wrapper<graphics::INode>>;
 
-  EngineFactory() noexcept;
+  Simulation() noexcept;
 
   UINodes GetUserInterfaceNodes();
+
+  UserInputs GetUserInputs() const;
 
  private:
   common::Logger logger_{};
@@ -29,6 +40,7 @@ class EngineFactory
   BackendSelector backend_selector_{};
   BlockNumSelector block_num_selector_{};
   ParticlesSelector particles_selector_{};
+  SimulationControls simulation_controls_{};
 };
 
 }  // namespace collider

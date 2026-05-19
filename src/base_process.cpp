@@ -1,4 +1,3 @@
-
 #include "base_process.hpp"
 
 namespace mpi
@@ -10,11 +9,14 @@ BaseProcess::BaseProcess()
 
 void BaseProcess::ProcessTask()
 {
-  while (!close_requested)
+  while (!control_frame_.close_requested)
   {
     Task();
-    MPI_Bcast(&close_requested, 1, MPI_CXX_BOOL, kMediatorProcess,
+    MPI_Bcast(&control_frame_, sizeof(ControlFrame), MPI_BYTE, kMediatorProcess,
               MPI_COMM_WORLD);
+
+    common::Logger::SetLogLevel(
+        static_cast<common::LogLevel>(control_frame_.log_level));
   }
 }
 

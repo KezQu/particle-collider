@@ -17,13 +17,6 @@ class WorkerProcess final : public BaseProcess
  public:
   using BaseProcess::BaseProcess;
 
-  template <typename T>
-    requires std::is_base_of_v<T, collider::BaseComputeBlock>
-  void SetComputeBlock()
-  {
-    compute_block_ = std::make_unique<T>(particles_);
-  }
-
  protected:
   void Task() override;
 
@@ -31,6 +24,7 @@ class WorkerProcess final : public BaseProcess
   common::Logger logger_{};
   collider::DynamicParticlesView particles_{};
   std::unique_ptr<collider::BaseComputeBlock> compute_block_{};
+  ControlFrame previous_frame_;
 };
 
 }  // namespace mpi

@@ -12,6 +12,12 @@ ParticlesSelector::ParticlesSelector() noexcept
 void ParticlesSelector::Generate()
 {
   ImGui::SeparatorText("Number of particles");
-  ImGui::SliderInt("##ParticlesNum", &number_of_particles, 2, 100);
+  ImGui::SliderInt("##ParticlesNum", &number_of_particles_, 2, 100);
 }
+
+int32_t ParticlesSelector::GetNumberOfParticles() const
+{
+  return number_of_particles_;
+}
+
 }  // namespace collider

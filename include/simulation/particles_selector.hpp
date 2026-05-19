@@ -16,7 +16,7 @@ class ParticlesSelector : public graphics::INode
   int32_t GetNumberOfParticles() const;
 
  private:
-  int32_t number_of_particles{10};
+  int32_t number_of_particles_{10};
 };
 }  // namespace collider
 

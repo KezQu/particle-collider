@@ -16,9 +16,11 @@ class LoggerSelector : public graphics::INode
 
   void Generate() override;
 
+  uint8_t GetSelectedLogLevel() const;
+
  private:
   common::Logger logger_{};
-  size_t selected_log_level_{static_cast<size_t>(common::LogLevel::kInfo)};
+  uint8_t selected_log_level_{static_cast<uint8_t>(common::LogLevel::kInfo)};
 };
 
 }  // namespace common

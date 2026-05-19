@@ -16,13 +16,15 @@ add_executable(${PROJECT_NAME}
 
     src/cuda_compute_block.cpp
     src/opencl_compute_block.cpp
+    src/compute_block_factory.cpp
     src/particle.cpp
     src/vec_2d.cpp
 
-    src/engine/engine_factory.cpp
-    src/engine/backend_selector.cpp
-    src/engine/block_num_selector.cpp
-    src/engine/particles_selector.cpp
+    src/simulation/simulation.cpp
+    src/simulation/simulation_controls.cpp
+    src/simulation/backend_selector.cpp
+    src/simulation/block_num_selector.cpp
+    src/simulation/particles_selector.cpp
 )
 
 add_subdirectory(dependencies)
@@ -32,7 +34,7 @@ add_subdirectory(common)
 target_include_directories(${PROJECT_NAME}
 PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/graphics/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/engine
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/simulation
     ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 

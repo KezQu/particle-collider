@@ -20,7 +20,7 @@ void BackendSelector::Generate()
     return;
   }
 
-  for (size_t idx{}; idx < available_backends.size(); ++idx)
+  for (int8_t idx{}; idx < available_backends.size(); ++idx)
   {
     bool const is_selected = (selected_backend_ == idx);
     if (ImGui::Selectable(available_backends.at(idx).data(), is_selected))
@@ -33,4 +33,10 @@ void BackendSelector::Generate()
   }
   ImGui::EndCombo();
 }
+
+int8_t BackendSelector::GetSelectedBackend() const
+{
+  return selected_backend_;
+}
+
 }  // namespace collider

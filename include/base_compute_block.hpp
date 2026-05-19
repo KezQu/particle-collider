@@ -1,6 +1,7 @@
 #ifndef BASE_COMPUTE_BLOCK_HPP_
 #define BASE_COMPUTE_BLOCK_HPP_
 
+#include <memory>
 #include <vector>
 
 #include "i_particle.hpp"
@@ -21,6 +22,8 @@ class BaseComputeBlock
   }
 
   virtual void Process() const = 0;
+
+  static std::unique_ptr<BaseComputeBlock> ComputeBlockFactory(int8_t backend);
 
  protected:
   common::Logger logger_{};

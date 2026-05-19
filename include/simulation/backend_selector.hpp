@@ -6,6 +6,7 @@
 
 namespace collider
 {
+
 class BackendSelector : public graphics::INode
 {
  public:
@@ -13,10 +14,12 @@ class BackendSelector : public graphics::INode
 
   void Generate() override;
 
+  int8_t GetSelectedBackend() const;
+
  private:
   common::Logger logger_{};
 
-  size_t selected_backend_{};
+  int8_t selected_backend_{};
 };
 }  // namespace collider
 

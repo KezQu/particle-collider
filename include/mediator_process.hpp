@@ -2,14 +2,15 @@
 #define MEDIATOR_PROCESS_HPP_
 
 #include "base_process.hpp"
-#include "engine_factory.hpp"
 #include "frame_guard.hpp"
 #include "logger_selector.hpp"
 #include "pane.hpp"
+#include "simulation.hpp"
 #include "window.hpp"
 
 namespace mpi
 {
+
 class MediatorProcess final : public BaseProcess
 {
  public:
@@ -22,7 +23,7 @@ class MediatorProcess final : public BaseProcess
   graphics::Window main_window_;
   graphics::Pane main_menu_;
   common::LoggerSelector logger_selector_;
-  collider::EngineFactory engine_factory_;
+  collider::Simulation simulation_;
 };
 
 }  // namespace mpi

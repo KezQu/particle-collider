@@ -1,13 +1,14 @@
 #ifndef LOGGER_HPP_
 #define LOGGER_HPP_
 
+#include <cstdint>
 #include <format>
 #include <iostream>
 
 namespace common
 {
 
-enum class LogLevel
+enum class LogLevel : uint8_t
 {
   kError,
   kWarn,
